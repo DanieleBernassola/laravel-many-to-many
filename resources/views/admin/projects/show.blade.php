@@ -12,6 +12,14 @@
 
         <p>Tipo progetto: {{ $project->type?->title ?: 'Tipo non definito' }}</p>
 
+        @if ($project->technologies->isNotEmpty())
+            <ul>Tecnologie:
+                @foreach ($project->technologies as $technology)
+                    <li>{{ $technology->title }}</li>
+                @endforeach
+            </ul>
+        @endif
+
         <a class="btn btn-primary" href="{{ route('admin.projects.index') }}">Torna alla lista progetti</a>
     </div>
 @endsection

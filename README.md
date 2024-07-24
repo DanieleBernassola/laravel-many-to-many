@@ -125,8 +125,7 @@ I task da svolgere sono diversi, ma alcuni di essi sono un ripasso di ciò che a
 <!-- -   creare il model Technology -->
 <!-- -   creare la migration per la tabella pivot project_technology -->
 <!-- -   aggiungere ai model Technology e Project i metodi per definire la relazione many to many -->
-
--   visualizzare nella pagina di dettaglio di un progetto le tecnologie utilizzate, se presenti
+<!-- -   visualizzare nella pagina di dettaglio di un progetto le tecnologie utilizzate, se presenti -->
 
     Bonus 1:
     <!-- creare il seeder per il model Technology. -->
