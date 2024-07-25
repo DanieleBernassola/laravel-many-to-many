@@ -36,7 +36,7 @@
                                     class="btn btn-info"><i class="fa-solid fa-magnifying-glass"></i></a>
                                 <a href="{{ route('admin.projects.edit', $project) }}" as="button"
                                     class="btn btn-warning"><i class="fa-solid fa-pencil"></i></a>
-                                <form action="{{ route('admin.projects.destroy', $project->id) }}" method="POST">
+                                <form action="{{ route('admin.projects.destroy', $project) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>

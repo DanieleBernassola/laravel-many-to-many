@@ -110,14 +110,17 @@ class ProjectController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Project $project)
     {
+        $project->technologies()->detach();
+        // $project->technologies()->sync([]);
+
         // SALVO PROJECT ID ALTRIMENTI CANCELLANDO IL RECORD NON è SICURO RIUSCIRà AD ACCEDERE ALL'ID
         // $project_id = $project->id();
-        $project = Project::findOrFail($id);
+        $project_id = $project->id;
 
         $project->delete();
 
-        return redirect()->route('admin.projects.index')->with('message', 'Progetto cancellato correttamente');
+        return redirect()->route('admin.projects.index')->with('message', $project_id . ' Progetto cancellato correttamente');
     }
 }
