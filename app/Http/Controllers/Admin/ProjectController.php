@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
+use App\Models\Technology;
 use App\Models\Type;
 use Illuminate\Support\Str;
 
@@ -29,7 +30,9 @@ class ProjectController extends Controller
     {
         $types = Type::all();
 
-        return view('admin.projects.create', compact('types'));
+        $technologies = Technology::all();
+
+        return view('admin.projects.create', compact('types', 'technologies'));
     }
 
     /**
@@ -42,12 +45,17 @@ class ProjectController extends Controller
         $data['slug'] = Str::of($data['title'])->slug('-');
         // $project->slug = Str::of($project->title)->slug('-');
 
+
         $project = new Project();
         $project->title = $data['title'];
         $project->content = $data['content'];
         $project->slug = $data['slug'];
         $project->type_id = $data['type_id'];
         $project->save();
+        // SE ESISTONO TECNOLOGIE NELLA RICHIESTA CREA LA RELAZIONE NELLA TABELLA PIVOT
+        if ($request->has('technologies')) {
+            $project->technologies()->attach($request->technologies);
+        }
 
         return redirect()->route('admin.projects.index')->with('message', 'Progetto creato correttamente');
     }
