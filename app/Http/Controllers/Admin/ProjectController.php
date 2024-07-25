@@ -76,7 +76,9 @@ class ProjectController extends Controller
     {
         $types = Type::all();
 
-        return view('admin.projects.edit', compact('project', 'types'));
+        $technologies = Technology::all();
+
+        return view('admin.projects.edit', compact('project', 'types', 'technologies'));
     }
 
     /**
@@ -94,6 +96,13 @@ class ProjectController extends Controller
         // $project->save();
 
         $project->update($data);
+
+        if ($request->has('technologies')) {
+            $project->technologies()->sync($request->technologies());
+        } else {
+            // SE NON VENGONO SCELTE TECNOLOGIE LE SCOLLEGA DALLA TABELLA
+            $project->technologies()->detach();
+        }
 
         return redirect()->route('admin.projects.index')->with('message', 'Progetto modificato correttamente');
     }

@@ -135,6 +135,7 @@ I task da svolgere sono diversi, ma alcuni di essi sono un ripasso di ciò che a
 
 I task sono:
 
--   permettere all’utente di associare le tecnologie nella pagina di creazione e modifica di un progetto
--   gestire il salvataggio dell’associazione progetto-tecnologie con opportune regole di validazione
+<!-- -   permettere all’utente di associare le tecnologie nella pagina di creazione e modifica di un progetto -->
+<!-- -   gestire il salvataggio dell’associazione progetto-tecnologie con opportune regole di validazione -->
+
 -   eliminare opportunamente le relazioni alla cancellazione del progetto/technology
